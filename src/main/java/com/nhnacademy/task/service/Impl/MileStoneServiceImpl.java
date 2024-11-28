@@ -3,6 +3,7 @@ package com.nhnacademy.task.service.Impl;
 import com.nhnacademy.task.domain.MileStone;
 import com.nhnacademy.task.repository.MileStoneRepository;
 import com.nhnacademy.task.repository.ProjectRepository;
+import com.nhnacademy.task.repository.TaskRepository;
 import com.nhnacademy.task.service.MileStoneService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -14,6 +15,7 @@ public class MileStoneServiceImpl implements MileStoneService {
 
     private final MileStoneRepository mileStoneRepository;
     private final ProjectRepository projectRepository;
+    private final TaskRepository taskRepository;
 
     @Override
     @Transactional
@@ -22,5 +24,12 @@ public class MileStoneServiceImpl implements MileStoneService {
         mileStone.setProject(projectRepository.findById(projectId).get());
 //        mileStone.setMilestoneName(milestoneName); milestone 타입을 몰라서 우선 주석
         return mileStoneRepository.save(mileStone);
+    }
+
+    @Override
+    @Transactional
+    public void deleteMileStone(long milestoneId) {
+        taskRepository.deleteByMileStoneId(milestoneId);
+        mileStoneRepository.deleteById(milestoneId);
     }
 }
