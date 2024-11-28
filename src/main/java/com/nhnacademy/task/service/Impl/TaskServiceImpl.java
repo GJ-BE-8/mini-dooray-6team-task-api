@@ -17,7 +17,7 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     @Transactional
-    public Task createTask(long projectId, long milestoneId, String content) {
+    public Task saveTask(long projectId, long milestoneId, String content) {
         Task task = new Task();
         task.setProjectId(projectId);
         task.setMilestoneId(milestoneId);
