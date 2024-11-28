@@ -1,5 +1,6 @@
 package com.nhnacademy.task.domain;
 
+
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -10,12 +11,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Getter
-public class Tag {
+public class MileStone {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "tag_id", nullable = false)
-    private long tagId;
+    @Column(name = "milestone_id", nullable = false)
+    private long milestoneId;
+
 
     @Column(name = "project_id", nullable = false)
-    private String projectId;
+    private long productId;
+
+
 }
