@@ -29,7 +29,7 @@ public class TagServiceImpl implements TagService {
     @Override
     @Transactional
     public void deleteTag(long tagId) {
-        tagTaskRepository.deleteById(tagId);
+        tagTaskRepository.deleteByTagId(tagId);
         tagRepository.deleteById(tagId);
     }
 }

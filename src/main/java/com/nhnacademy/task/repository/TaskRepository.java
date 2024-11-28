@@ -8,4 +8,8 @@ import java.util.List;
 public interface TaskRepository extends JpaRepository<Task, Long> {
     //특정 프로젝트에 해당하는 task 조회
     List<Task> findByProjectId(long projectId);
+
+    //task에서 마일스톤 아이디 삭제
+    void deleteByMileStoneId(Long milestoneId);
+
 }
