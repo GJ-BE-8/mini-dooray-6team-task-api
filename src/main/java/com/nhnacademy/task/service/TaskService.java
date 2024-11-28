@@ -7,7 +7,7 @@ import java.util.List;
 public interface TaskService {
 
     //새 task 등록
-    Task createTask(long projectId, long milestoneId, String content);
+    Task saveTask(long projectId, long milestoneId, String content);
 
     //task 수정
     Task updateTask(Long taskId, String updatedContent, Long milestoneId); // 태스크 수정
