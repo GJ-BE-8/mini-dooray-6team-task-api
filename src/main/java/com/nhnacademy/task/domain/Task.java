@@ -18,11 +18,11 @@ public class Task {
     @Column(name = "task_id")
     private long taskId;
 
-    @Column(name = "project_id", nullable = false)
-    private long projectId;
+//    @Column(name = "project_id", nullable = false)
+//    private long projectId;
 
-    @Column(name = "milestone_id", nullable = false)
-    private long milestoneId;
+//    @Column(name = "milestone_id", nullable = false)
+//    private long milestoneId;
 
     @Column(length = 300)
     private String content;
@@ -35,4 +35,13 @@ public class Task {
     //MileStone, Task 양방향
     @ManyToOne(optional = false)
     private MileStone mileStone;
+
+    //Project, Task 양방향
+    @ManyToOne(optional = false)
+    private Project project;
+
+    //Project, Comment 양방향
+    @OneToMany(mappedBy = "task", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, orphanRemoval = true)
+    private List<Comment> comments = new ArrayList<>();
+
 }
