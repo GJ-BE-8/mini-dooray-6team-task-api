@@ -1,6 +1,8 @@
 package com.nhnacademy.task.service.Impl;
 
 import com.nhnacademy.task.domain.Task;
+import com.nhnacademy.task.repository.MileStoneRepository;
+import com.nhnacademy.task.repository.ProjectRepository;
 import com.nhnacademy.task.repository.TaskRepository;
 import com.nhnacademy.task.service.TaskService;
 import jakarta.transaction.Transactional;
@@ -14,13 +16,15 @@ import java.util.List;
 public class TaskServiceImpl implements TaskService {
 
     private final TaskRepository taskRepository;
+    private final ProjectRepository projectRepository;
+    private final MileStoneRepository mileStoneRepository;
 
     @Override
     @Transactional
     public Task saveTask(long projectId, long milestoneId, String content) {
         Task task = new Task();
-        task.setProjectId(projectId);
-        task.setMilestoneId(milestoneId);
+        task.setProject(projectRepository.findById(projectId).get());
+        task.setMileStone(mileStoneRepository.findById(milestoneId).get());
         task.setContent(content);
         return taskRepository.save(task);
     }
@@ -31,7 +35,7 @@ public class TaskServiceImpl implements TaskService {
         Task task = taskRepository.findById(taskId).
                 orElseThrow(() -> new RuntimeException("Task가 없다!"));
         task.setContent(updatedContent);
-        task.setMilestoneId(milestoneId);
+        task.setMileStone(mileStoneRepository.findById(milestoneId).get());
         return taskRepository.save(task);
     }
 

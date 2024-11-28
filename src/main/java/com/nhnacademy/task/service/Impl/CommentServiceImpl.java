@@ -2,6 +2,7 @@ package com.nhnacademy.task.service.Impl;
 
 import com.nhnacademy.task.domain.Comment;
 import com.nhnacademy.task.repository.CommentRepository;
+import com.nhnacademy.task.repository.TaskRepository;
 import com.nhnacademy.task.service.CommentService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -12,13 +13,13 @@ import org.springframework.stereotype.Service;
 public class CommentServiceImpl implements CommentService {
 
     private final CommentRepository commentRepository;
-
+    private final TaskRepository taskRepository;
 
     @Override
     @Transactional
     public Comment saveComment(long taskId, String writerId, String content) {
         Comment comment = new Comment();
-        comment.setTaskId(taskId);
+        comment.setTask(taskRepository.findById(taskId).get());
         comment.setWriterId(writerId);
         comment.setContent(content);
         return commentRepository.save(comment);
