@@ -40,7 +40,15 @@ public class Project {
     private List<Tag> tags = new ArrayList<>();
 
 
-    //Project, MileStone 다대다 양방향
+    //Project, MileStone 양방향
     @OneToMany(mappedBy = "project", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, orphanRemoval = true)
     private List<MileStone> mileStones = new ArrayList<>();
+
+    //Project, Task 양방향
+    @OneToMany(mappedBy = "project", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, orphanRemoval = true)
+    private List<Task> tasks = new ArrayList<>();
+
+
+
+
 }

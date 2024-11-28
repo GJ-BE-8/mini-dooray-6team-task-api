@@ -24,8 +24,8 @@ public class Tag {
     @Length(max = 50)
     private String tagName;
 
-    @Column(name = "project_id", nullable = false)
-    private String projectId;
+//    @Column(name = "project_id", nullable = false)
+//    private String projectId;
 
 
 
