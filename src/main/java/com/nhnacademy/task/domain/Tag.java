@@ -28,4 +28,8 @@ public class Tag {
     private String projectId;
 
 
+    @OneToMany(mappedBy = "tag", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, orphanRemoval = true)
+    private List<TagTask> tagTasks = new ArrayList<>();
+
+
 }
