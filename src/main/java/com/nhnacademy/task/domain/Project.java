@@ -6,6 +6,9 @@ import jakarta.validation.constraints.NotNull;
 import lombok.*;
 import org.hibernate.validator.constraints.Length;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 @Entity
 @NoArgsConstructor
@@ -31,4 +34,13 @@ public class Project {
 
    @Column(name = "admin_id", nullable = false)
     private long adminId;
+
+   //Project, Tag 양방향
+   @OneToMany(mappedBy = "project", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, orphanRemoval = true)
+    private List<Tag> tags = new ArrayList<>();
+
+
+    //Project, MileStone 다대다 양방향
+    @OneToMany(mappedBy = "project", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, orphanRemoval = true)
+    private List<MileStone> mileStones = new ArrayList<>();
 }
