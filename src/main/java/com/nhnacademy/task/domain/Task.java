@@ -21,8 +21,8 @@ public class Task {
     @Column(name = "project_id", nullable = false)
     private long projectId;
 
-//    @Column(name = "milestone_id", nullable = false)
-//    private long milestoneId;
+    @Column(name = "milestone_id", nullable = false)
+    private long milestoneId;
 
     @Column(length = 300)
     private String content;
@@ -35,8 +35,4 @@ public class Task {
     //MileStone, Task 양방향
     @ManyToOne(optional = false)
     private MileStone mileStone;
-
-    //Project, Task 양방향
-    @ManyToOne(optional = false)
-    private Project project;
 }

@@ -19,8 +19,8 @@ public class MileStone {
     private long milestoneId;
 
 
-    @Column(name = "project_id", nullable = false)
-    private long productId;
+//    @Column(name = "project_id", nullable = false)
+//    private long productId;
 
     //마일 스톤 일단 뺏음
 
