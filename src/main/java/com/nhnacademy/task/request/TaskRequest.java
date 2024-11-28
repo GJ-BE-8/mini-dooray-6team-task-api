@@ -13,6 +13,8 @@ import org.hibernate.validator.constraints.Length;
 @AllArgsConstructor
 @NoArgsConstructor
 public class TaskRequest {
+    private long taskId;
+
     @NotNull
     private long projectId;
     @NotNull
