@@ -28,8 +28,14 @@ public class Tag {
     private String projectId;
 
 
+
+    //Tag, TagTask 양방향
     @OneToMany(mappedBy = "tag", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, orphanRemoval = true)
     private List<TagTask> tagTasks = new ArrayList<>();
 
+
+    //Project, Tag 양방향
+    @ManyToOne(optional = false)
+    private Project project;
 
 }
