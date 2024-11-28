@@ -29,7 +29,12 @@ public class Task {
     @Column(length = 300)
     private String content;
 
+
     @OneToMany(mappedBy = "task", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, orphanRemoval = true)
     private List<TagTask> tagTasks = new ArrayList<>();
 
+
+    //MileStone, Task 양방향
+    @ManyToOne(optional = false)
+    private MileStone mileStone;
 }
