@@ -23,4 +23,8 @@ public class MileStone {
 
     //마일 스톤 일단 뺏음
 
+    //Project, MileStone 다대다 양방향
+    @ManyToOne(optional = false)
+    private Project project;
+
 }
