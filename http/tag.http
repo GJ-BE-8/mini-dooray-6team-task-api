@@ -1,0 +1,12 @@
+### 태그 생성
+POST http://localhost:8080/tags/
+Content-Type: application/json
+
+{
+  "projectId":1,
+  "tagName":"test-tag"
+}
+
+
+### 태그 삭제
+DELETE http://localhost:8080/tags/1

@@ -8,26 +8,25 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("comments/")
 public class CommentController {
 
     private final CommentService commentService;
 
     //Comment 생성
-    @PostMapping
+    @PostMapping("/comments")
     public Comment createComment(@RequestBody CommentRequest commentRequest) {
         return commentService.saveComment(commentRequest.getTaskId(), commentRequest.getWriterId(), commentRequest.getContent());
     }
 
     //Comment 수정
-    @PostMapping("{commentId}")
+    @PostMapping("/comments/{commentId}")
     public Comment updateComment(@PathVariable long commentId, @RequestBody CommentRequest commentRequest) {
         return commentService.updateComment(commentId, commentRequest.getContent());
     }
 
     //Comment 삭제
-    @PostMapping("{commenetId}")
-    public void deleteComment(@PathVariable long commenetId) {
-        commentService.deleteComment(commenetId);
+    @DeleteMapping("/comments/{commentId}")
+    public void deleteComment(@PathVariable("commentId")long commentId) {
+        commentService.deleteComment(commentId);
     }
 }
