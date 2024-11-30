@@ -29,7 +29,7 @@ public class MileStoneServiceImpl implements MileStoneService {
     @Override
     @Transactional
     public void deleteMileStone(long milestoneId) {
-        taskRepository.deleteByMileStoneId(milestoneId);
+        taskRepository.deleteByMileStone_MilestoneId(milestoneId);
         mileStoneRepository.deleteById(milestoneId);
     }
 }

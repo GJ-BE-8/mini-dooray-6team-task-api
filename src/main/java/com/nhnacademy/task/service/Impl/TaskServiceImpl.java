@@ -48,6 +48,6 @@ public class TaskServiceImpl implements TaskService {
     @Override
     @Transactional
     public List<Task> getTasksByProjectId(long projectId) {
-        return taskRepository.findByProjectId(projectId);
+        return taskRepository.findByProject_ProjectId(projectId);
     }
 }
