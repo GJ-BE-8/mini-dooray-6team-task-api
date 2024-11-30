@@ -20,7 +20,7 @@ public class TagController {
     }
 
     //태그 삭제(태그태스크도 같이 삭제)
-    @PostMapping("{tagId}")
+    @DeleteMapping("{tagId}")
     public void deleteTag(@PathVariable Long tagId) {
         tagService.deleteTag(tagId);
     }
