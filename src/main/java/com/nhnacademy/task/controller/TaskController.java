@@ -1,4 +1,4 @@
-package com.nhnacademy.task.Controller;
+package com.nhnacademy.task.controller;
 
 import com.nhnacademy.task.domain.Task;
 import com.nhnacademy.task.request.TaskRequest;

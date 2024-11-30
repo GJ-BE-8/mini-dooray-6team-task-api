@@ -18,15 +18,16 @@ class CommentRepositoryTest {
     @Autowired
     private CommentRepository commentRepository;
 
-    @Autowired
-    private TaskRepository taskRepository;
-
     @Sql("comment.sql")
     @Test
-    void testFindAllComments(){
-        List<Comment> comments = commentRepository.findAll();
+    void findCommentTest(){
+        long commentId = 1L;
 
-        assertThat(comments).hasSize(1);
+        Comment comment = commentRepository.findById(commentId).orElse(null);
+
+        assertThat(comment).isNotNull();
+        assertThat(comment.getCommentId()).isEqualTo(commentId);
+        assertThat(comment.getWriterId()).isEqualTo("user1");
     }
 
 }

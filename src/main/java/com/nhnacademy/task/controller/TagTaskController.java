@@ -1,4 +1,4 @@
-package com.nhnacademy.task.Controller;
+package com.nhnacademy.task.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.RestController;
