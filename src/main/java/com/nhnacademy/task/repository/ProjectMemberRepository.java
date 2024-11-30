@@ -24,6 +24,10 @@ public class ProjectMemberRepository {
         Object object = redisTemplate.opsForHash().get(HASH_NAME, projectKey);
 
         List<Long> list = (object != null) ? (List<Long>) object : new ArrayList<>();
+
+        if (list.contains(memberId)) {
+            throw new IllegalArgumentException("memberId already exist");
+        }
         list.add(memberId);
 
         redisTemplate.opsForHash().put(HASH_NAME, projectKey, list);
@@ -49,12 +53,10 @@ public class ProjectMemberRepository {
         String projectKey = String.valueOf(projectId); // Long to String
         List<Long> memberProjects = getProjectMember(projectId);
         Iterator<Long> iterator = memberProjects.iterator();
-        while (iterator.hasNext())
-        {
             Long memberProject = iterator.next();
             if (memberProject.equals(memberId)) {
                 iterator.remove();
-                redisTemplate.opsForHash().put(HASH_NAME,projectKey,memberProjects);
+                redisTemplate.opsForHash().put(HASH_NAME, projectKey, memberProjects);
             }
         }
     }
