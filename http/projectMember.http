@@ -1,0 +1,20 @@
+###project-members 추가
+POST localhost:4444/project-members
+Content-Type: application/json
+
+{
+  "memberId": 125,
+  "projectId": 3
+}
+
+### project-members 제거
+DELETE localhost:4444/project-members
+Content-Type: application/json
+
+{
+  "memberId": 125,
+  "projectId": 3
+}
+
+### project-members 조회
+GET localhost:4444/project-members/3
