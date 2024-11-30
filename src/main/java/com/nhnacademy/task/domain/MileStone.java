@@ -23,7 +23,7 @@ public class MileStone {
 //    @Column(name = "project_id", nullable = false)
 //    private long productId;
 
-    @NotNull
+    @Column(name = "milestone_name", nullable = false)
     private String milestoneName;
 
     //Project, MileStone 다대다 양방향
