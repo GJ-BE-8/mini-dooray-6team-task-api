@@ -17,7 +17,7 @@ class ProjectRepositoryTest {
     @Autowired
     private ProjectRepository projectRepository;
 
-    @Sql("data.sql")
+    @Sql("project.sql")
     @Test
     void findProjectTest(){
         long projectId = 1L;
