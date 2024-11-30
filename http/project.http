@@ -1,0 +1,8 @@
+POST http://localhost:8080/project
+Content-Type: application/json
+
+{
+"projectName":"프로젝트1",
+"status":"활성",
+"adminId":100
+}
