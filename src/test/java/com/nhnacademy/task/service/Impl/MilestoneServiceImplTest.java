@@ -38,7 +38,7 @@ public class MilestoneServiceImplTest {
         project = new Project();
         project.setProjectId(1L);
         project.setProjectName("Test Project");
-        project.setStatus("Active");
+        project.setStatus("활성");
         project.setAdminId(100L);
 
         milestone = new MileStone();
