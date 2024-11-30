@@ -2,6 +2,7 @@ package com.nhnacademy.task.domain;
 
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 import java.util.ArrayList;
@@ -22,7 +23,8 @@ public class MileStone {
 //    @Column(name = "project_id", nullable = false)
 //    private long productId;
 
-    //마일 스톤 일단 뺏음
+    @NotNull
+    private String milestoneName;
 
     //Project, MileStone 다대다 양방향
     @ManyToOne(optional = false)
