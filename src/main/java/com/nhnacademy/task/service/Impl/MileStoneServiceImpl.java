@@ -22,7 +22,7 @@ public class MileStoneServiceImpl implements MileStoneService {
     public MileStone addMilestoneToProject(Long projectId, String milestoneName) {
         MileStone mileStone = new MileStone();
         mileStone.setProject(projectRepository.findById(projectId).get());
-//        mileStone.setMilestoneName(milestoneName); milestone 타입을 몰라서 우선 주석
+        mileStone.setMilestoneName(milestoneName);
         return mileStoneRepository.save(mileStone);
     }
 
