@@ -17,7 +17,7 @@ public class MileStoneController {
 
     @PostMapping("/milestone")
     public MileStone createMileStone(@RequestBody MileStoneRequest mileStoneRequest) {
-        MileStone mileStone = mileStoneService.addMilestoneToProject(mileStoneRequest.getProjectId(), mileStoneRequest.getMileStone());
+        MileStone mileStone = mileStoneService.addMilestoneToProject(mileStoneRequest.getProjectId(), mileStoneRequest.getMileStoneName());
         return mileStone;
     }
 

@@ -17,6 +17,6 @@ public class MileStoneRequest {
     private long projectId;
 
     @NotNull
-    private MileStone mileStone;
+    private String mileStoneName;
 
 }
