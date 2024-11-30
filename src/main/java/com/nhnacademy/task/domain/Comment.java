@@ -18,7 +18,7 @@ public class Comment {
 //    @Column(name = "task_id")
 //    private long taskId;
 
-    @Column(name = "wirter_id", nullable = false, length = 50)
+    @Column(name = "writer_id", nullable = false, length = 50)
     private String writerId;
 
     @Column(length = 255, nullable = false)
