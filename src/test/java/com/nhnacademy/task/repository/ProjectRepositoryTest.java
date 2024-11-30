@@ -17,7 +17,7 @@ class ProjectRepositoryTest {
     @Autowired
     private ProjectRepository projectRepository;
 
-    @Sql(scripts = "classpath:com/nhnacademy/task/repository/Project.sql")
+    @Sql("data.sql")
     @Test
     void findProjectTest(){
         long projectId = 1L;

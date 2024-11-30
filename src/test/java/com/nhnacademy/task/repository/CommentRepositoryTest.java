@@ -21,7 +21,7 @@ class CommentRepositoryTest {
     @Autowired
     private TaskRepository taskRepository;
 
-    @Sql("comment-test.sql")
+    @Sql("data.sql")
     @Test
     void testFindAllComments(){
         List<Comment> comments = commentRepository.findAll();
