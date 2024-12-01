@@ -81,6 +81,28 @@ public class MilestoneServiceImplTest {
         verify(taskRepository, times(1)).deleteByMileStone_MilestoneId(milestoneId);
         verify(mileStoneRepository, times(1)).deleteById(milestoneId);
     }
+
+    @Test
+    void testFindById() {
+        // Arrange
+        long milestoneId = 1L;
+
+        // Mockito가 milestoneRepository.findById를 호출할 때 반환할 값을 지정
+        when(mileStoneRepository.findById(milestoneId)).thenReturn(java.util.Optional.of(milestone));
+
+        // Act
+        MileStone foundMilestone = mileStoneService.findById(milestoneId);
+
+        // Assert
+        assertNotNull(foundMilestone);
+        assertEquals("Test Milestone", foundMilestone.getMilestoneName());
+        assertEquals(1L, foundMilestone.getProject().getProjectId());
+
+        // Mockito 검증
+        verify(mileStoneRepository, times(1)).findById(milestoneId);
+    }
+
+
 }
 
 

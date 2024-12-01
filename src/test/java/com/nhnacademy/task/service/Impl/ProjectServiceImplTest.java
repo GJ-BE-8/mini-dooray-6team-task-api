@@ -55,4 +55,37 @@ public class ProjectServiceImplTest {
         // Mockito 검증
         verify(projectRepository, times(1)).save(any(Project.class));
     }
+
+    @Test
+    void testDeleteProject() {
+        // Arrange
+        long projectId = 1L;
+
+        // Act
+        projectService.deleteProject(projectId);
+
+        // Assert
+        verify(projectRepository, times(1)).deleteById(projectId);
+    }
+
+    @Test
+    void testGetProject() {
+        // Arrange
+        long projectId = 1L;
+
+        // Mockito가 projectRepository.findById 호출 시 반환할 값을 설정
+        when(projectRepository.findById(projectId)).thenReturn(java.util.Optional.of(project));
+
+        // Act
+        Project foundProject = projectService.getProject(projectId);
+
+        // Assert
+        assertNotNull(foundProject);
+        assertEquals("프로젝트1", foundProject.getProjectName());
+        assertEquals("활성", foundProject.getStatus());
+        assertEquals(100L, foundProject.getAdminId());
+
+        // Mockito 검증
+        verify(projectRepository, times(1)).findById(projectId);
+    }
 }

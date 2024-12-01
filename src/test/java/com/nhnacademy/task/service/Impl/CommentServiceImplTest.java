@@ -1,6 +1,7 @@
 package com.nhnacademy.task.service.Impl;
 
 import com.nhnacademy.task.domain.Comment;
+import com.nhnacademy.task.domain.MileStone;
 import com.nhnacademy.task.domain.Task;
 import com.nhnacademy.task.repository.CommentRepository;
 import com.nhnacademy.task.repository.TaskRepository;
@@ -104,5 +105,27 @@ public class CommentServiceImplTest {
         // Assert
         // Mockito 검증: deleteById 호출 확인
         verify(commentRepository, times(1)).deleteById(commentId);
+    }
+
+    @Test
+    void testFindById() {
+        // Arrange
+        long commentId = 1L;
+
+        // Mockito 설정: commentRepository에서 해당 comment를 반환하도록 설정
+        when(commentRepository.findById(commentId)).thenReturn(java.util.Optional.of(comment));
+
+        // Act
+        Comment foundComment = commentService.getComment(commentId);
+
+        // Assert
+        assertNotNull(foundComment);
+        assertEquals(commentId, foundComment.getCommentId());
+        assertEquals("Test Comment", foundComment.getContent());
+        assertEquals("writer123", foundComment.getWriterId());
+        assertEquals(task.getTaskId(), foundComment.getTask().getTaskId());
+
+        // Mockito 검증: findById 호출 확인
+        verify(commentRepository, times(1)).findById(commentId);
     }
 }
