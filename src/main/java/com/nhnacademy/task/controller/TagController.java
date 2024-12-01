@@ -28,4 +28,9 @@ public class TagController {
     public Tag getTag(@PathVariable("tagId") Long tagId) {
         return tagService.getTagById(tagId);
     }
+
+    @PutMapping("/tags/{tagId}")
+    public Tag updateTag(@PathVariable("tagId") Long tagId, @RequestBody TagRequest tagRequest) {
+        return tagService.updateTag(tagId, tagRequest.getTagName());
+    }
 }

@@ -45,5 +45,14 @@ public class TagServiceImpl implements TagService {
         return tagRepository.findAllByTask(taskId);
     }
 
+    @Override
+    public Tag updateTag(Long tagId, String tagName) {
+        Tag tag = tagRepository.findById(tagId)
+                .orElseThrow(() -> new RuntimeException("태그 없음! "));
+
+        tag.setTagName(tagName);
+
+        return tagRepository.save(tag);
+    }
 }
 
