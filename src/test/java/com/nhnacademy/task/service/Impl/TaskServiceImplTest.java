@@ -3,13 +3,13 @@ package com.nhnacademy.task.service.Impl;
 import com.nhnacademy.task.domain.MileStone;
 import com.nhnacademy.task.domain.Project;
 import com.nhnacademy.task.domain.Task;
-import com.nhnacademy.task.repository.MileStoneRepository;
-import com.nhnacademy.task.repository.ProjectRepository;
-import com.nhnacademy.task.repository.TaskRepository;
+import com.nhnacademy.task.repository.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.Arrays;
@@ -34,9 +34,16 @@ public class TaskServiceImplTest {
     @InjectMocks
     private TaskServiceImpl taskService;
 
+    @Mock
+    private TagTaskRepository tagTaskRepository;
+    @Mock
+    private CommentRepository commentRepository;
+
     private Project project;
     private MileStone mileStone;
     private Task task;
+
+
 
     @BeforeEach
     void setUp() {
@@ -125,6 +132,8 @@ public class TaskServiceImplTest {
         taskService.deleteTask(taskId);
 
         // Assert
+        verify(commentRepository, times(1)).deleteByTask_TaskId(taskId);
+        verify(tagTaskRepository, times(1)).deleteByTask_TaskId(taskId);
         verify(taskRepository, times(1)).deleteById(taskId);
     }
 
