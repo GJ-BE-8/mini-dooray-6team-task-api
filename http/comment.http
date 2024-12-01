@@ -23,5 +23,8 @@ Content-Type: application/json
 ### Comment 삭제
 DELETE http://localhost:4444/comments/1
 
+### Comment get
+GET http://localhost:4444/comments/1
+
 
 

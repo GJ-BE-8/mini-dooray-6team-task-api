@@ -11,4 +11,7 @@ public interface CommentService {
 
     //코멘트 삭제
     void deleteComment(long commentId);
+
+    //comment get
+    Comment getComment(long commentId);
 }
