@@ -35,11 +35,11 @@ public class TaskController {
     }
 
 
-    @GetMapping("/task/{projectId}")
+    @GetMapping("/tasks/{projectId}")
     public List<Task> getTasks(@PathVariable long projectId) {
         return taskService.getTasksByProjectId(projectId);
     }
-
+    
 
 
 
