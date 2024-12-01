@@ -1,4 +1,4 @@
-POST http://localhost:8080/milestone
+POST http://localhost:4444/milestone
 Content-Type: application/json
 
 {
@@ -8,4 +8,4 @@ Content-Type: application/json
 
 
 ### get
-GET http://localhost:8080/milestone/1
+GET http://localhost:4444/milestones/1

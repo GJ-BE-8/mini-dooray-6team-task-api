@@ -14,21 +14,18 @@ public class MileStoneController {
 
 
     @PostMapping("/milestone")
-    @Transactional
     public MileStone createMileStone(@RequestBody MileStoneRequest mileStoneRequest) {
         MileStone mileStone = mileStoneService.addMilestoneToProject(mileStoneRequest.getProjectId(), mileStoneRequest.getMileStoneName());
         return mileStone;
     }
 
-    @GetMapping("/milestone/{milestoneId}")
-    @Transactional
-    public MileStone getMileStone(@PathVariable Long milestoneId) {
-        MileStone mileStone = mileStoneService.findById(milestoneId);
-        return mileStone;
+    @GetMapping("/milestones/{milestoneId}")
+    public MileStone getMileStone(@PathVariable("milestoneId") Long milestoneId) {
+        return mileStoneService.findById(milestoneId);
     }
 
 
-    @PostMapping("/milestone/delete/{milestoneId}")
+    @PostMapping("/milestones/delete/{milestoneId}")
     public void deleteMileStone(@PathVariable Long milestoneId) {
         mileStoneService.deleteMileStone(milestoneId);
     }
