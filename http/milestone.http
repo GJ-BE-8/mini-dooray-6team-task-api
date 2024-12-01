@@ -6,6 +6,15 @@ Content-Type: application/json
   "mileStoneName":"마일스톤1"
 }
 
+###추가
+POST http://localhost:4444/milestone
+Content-Type: application/json
+
+{
+  "projectId":1,
+  "mileStoneName":"마일스톤2"
+}
+
 
 ### get
 GET http://localhost:4444/milestones/1
@@ -13,3 +22,7 @@ GET http://localhost:4444/milestones/1
 
 ### 삭제
 DELETE http://localhost:4444/milestones/delete/1
+
+
+###특정 프로젝트의 마일스톤 리스트 조회
+GET http://localhost:4444/project/1/milestone

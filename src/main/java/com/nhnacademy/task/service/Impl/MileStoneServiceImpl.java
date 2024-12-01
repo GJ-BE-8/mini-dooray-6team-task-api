@@ -9,6 +9,8 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class MileStoneServiceImpl implements MileStoneService {
@@ -36,5 +38,11 @@ public class MileStoneServiceImpl implements MileStoneService {
     public void deleteMileStone(long milestoneId) {
         taskRepository.deleteByMileStone_MilestoneId(milestoneId);
         mileStoneRepository.deleteById(milestoneId);
+    }
+
+
+    @Override
+    public List<MileStone> getAllMilestonebyProject(long projectId){
+        return mileStoneRepository.findAllByProject_ProjectId(projectId);
     }
 }
