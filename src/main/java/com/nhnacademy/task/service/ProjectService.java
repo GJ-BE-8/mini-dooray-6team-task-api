@@ -11,4 +11,6 @@ public interface ProjectService {
     //프로젝트에 태그 추가
     //태그 삭제(task에서도 삭제됨)
     //마일스톤 삭제(task에서도 삭제됨)
+
+    void deleteProject(long projectId);
 }
