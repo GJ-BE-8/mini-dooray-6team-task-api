@@ -11,6 +11,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.List;
+
 import static org.mockito.Mockito.*;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -81,4 +83,55 @@ public class TagServiceImplTest {
         verify(tagTaskRepository, times(1)).deleteByTag_TagId(tagId);
         verify(tagRepository, times(1)).deleteById(tagId);
     }
+
+    @Test
+    void testGetTagById() {
+        // Arrange
+        long tagId = 1L;
+
+        // Mockito가 tagRepository.findById를 호출할 때 반환할 값을 지정
+        when(tagRepository.findById(tagId)).thenReturn(java.util.Optional.of(tag));
+
+        // Act
+        Tag foundTag = tagService.getTagById(tagId);
+
+        // Assert
+        assertNotNull(foundTag);
+        assertEquals("Test Tag", foundTag.getTagName());
+        assertEquals(1L, foundTag.getProject().getProjectId());
+
+        // Mockito 검증
+        verify(tagRepository, times(1)).findById(tagId);
+    }
+
+    // 추가된 getAllTagByTask 테스트
+    @Test
+    void testGetAllTagByTask() {
+        // Arrange
+        long taskId = 1L;
+        Tag tag1 = new Tag();
+        tag1.setTagName("Tag 1");
+        tag1.setProject(project);
+        Tag tag2 = new Tag();
+        tag2.setTagName("Tag 2");
+        tag2.setProject(project);
+
+        List<Tag> tags = List.of(tag1, tag2);
+
+        // Mockito가 tagRepository.findAllByTask를 호출할 때 반환할 값을 지정
+        when(tagRepository.findAllByTask(taskId)).thenReturn(tags);
+
+        // Act
+        List<Tag> resultTags = tagService.getAllTagByTask(taskId);
+
+        // Assert
+        assertNotNull(resultTags);
+        assertEquals(2, resultTags.size());
+        assertEquals("Tag 1", resultTags.get(0).getTagName());
+        assertEquals("Tag 2", resultTags.get(1).getTagName());
+
+        // Mockito 검증
+        verify(tagRepository, times(1)).findAllByTask(taskId);
+    }
 }
+
