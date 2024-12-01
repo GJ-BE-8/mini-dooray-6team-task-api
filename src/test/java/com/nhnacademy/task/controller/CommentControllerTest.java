@@ -99,4 +99,32 @@ class CommentControllerTest {
         mockMvc.perform(delete("/comments/1"))
                 .andExpect(status().isOk());
     }
+
+    // updateComment 테스트 추가
+    @Test
+    void testUpdateComment() throws Exception {
+        String updatedContent = "Updated comment content"; // 업데이트된 내용
+
+        CommentRequest commentRequest = new CommentRequest(1L, "user1", updatedContent);
+
+        // mock 서비스에서 업데이트된 comment 반환
+        Comment updatedComment = new Comment();
+        updatedComment.setCommentId(1L);
+        updatedComment.setWriterId("user1");
+        updatedComment.setContent(updatedContent);
+        updatedComment.setTask(task);
+
+        Mockito.when(commentService.updateComment(eq(1L), eq(updatedContent))).thenReturn(updatedComment);
+
+        // PUT 요청을 보내고, 반환된 JSON을 검증
+        mockMvc.perform(put("/comments/1") // PUT으로 수정
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(commentRequest)))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.commentId").value(1L))
+                .andExpect(jsonPath("$.writerId").value("user1"))
+                .andExpect(jsonPath("$.content").value(updatedContent)) // 업데이트된 내용 확인
+                .andExpect(jsonPath("$.task.taskId").value(1L))
+                .andExpect(jsonPath("$.task.project.projectId").value(1L));
+    }
 }

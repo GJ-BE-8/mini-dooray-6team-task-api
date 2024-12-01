@@ -19,7 +19,7 @@ public class CommentController {
     }
 
     //Comment 수정
-    @PostMapping("/comments/{commentId}")
+    @PutMapping("/comments/{commentId}")
     public Comment updateComment(@PathVariable long commentId, @RequestBody CommentRequest commentRequest) {
         return commentService.updateComment(commentId, commentRequest.getContent());
     }
