@@ -12,3 +12,11 @@ DELETE http://localhost:4444/tags/1
 
 ### 태그 get
 GET http://localhost:4444/tags/1
+
+### 태그 수정
+PUT http://localhost:4444/tags/1
+Content-Type: application/json
+
+{
+  "tagName": "태그 수정"
+}

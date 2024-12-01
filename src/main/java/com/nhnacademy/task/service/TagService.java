@@ -1,6 +1,8 @@
 package com.nhnacademy.task.service;
 
 import com.nhnacademy.task.domain.Tag;
+import jakarta.validation.constraints.NotBlank;
+import org.hibernate.validator.constraints.Length;
 
 import java.util.List;
 
@@ -16,4 +18,6 @@ public interface TagService {
 
     //태스크에 있는 모든 태그 가져오기
     public List<Tag> getAllTagByTask(long taskId);
+
+    Tag updateTag(Long tagId, String tagName);
 }
