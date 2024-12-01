@@ -1,10 +1,7 @@
 package com.nhnacademy.task.service.Impl;
 
 import com.nhnacademy.task.domain.Task;
-import com.nhnacademy.task.repository.CommentRepository;
-import com.nhnacademy.task.repository.MileStoneRepository;
-import com.nhnacademy.task.repository.ProjectRepository;
-import com.nhnacademy.task.repository.TaskRepository;
+import com.nhnacademy.task.repository.*;
 import com.nhnacademy.task.service.TaskService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -20,6 +17,7 @@ public class TaskServiceImpl implements TaskService {
     private final ProjectRepository projectRepository;
     private final MileStoneRepository mileStoneRepository;
     private final CommentRepository commentRepository;
+    private final TagTaskRepository tagTaskRepository;
 
     @Override
     @Transactional
@@ -45,7 +43,8 @@ public class TaskServiceImpl implements TaskService {
     @Transactional
     public void deleteTask(long taskId) {
         // todo task 참조하는 comment 삭제해야함 and tag_task 삭제해야함 by taskId
-        commentRepository.deleteById(taskId);
+        commentRepository.deleteByTask_TaskId(taskId);
+        tagTaskRepository.deleteByTask_TaskId(taskId);
         taskRepository.deleteById(taskId);
     }
 

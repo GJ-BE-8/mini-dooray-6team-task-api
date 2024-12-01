@@ -6,4 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface TagTaskRepository extends JpaRepository<TagTask, Long> {
     void deleteByTag_TagId(Long tagId);
 
+    void deleteByTask_TaskId(Long taskId);
+
 }
