@@ -32,9 +32,16 @@ public class TagController {
     }
 
 
+
     //프로젝트에 있는 모든 태그 보기
     @GetMapping("/project/{projectId}/tags")
     public List<Tag> getTags(@PathVariable("projectId") Long projectId) {
         return tagService.getAllTagByProjectId(projectId);
+    }
+  
+    @PutMapping("/tags/{tagId}")
+    public Tag updateTag(@PathVariable("tagId") Long tagId, @RequestBody TagRequest tagRequest) {
+        return tagService.updateTag(tagId, tagRequest.getTagName());
+
     }
 }
