@@ -1,6 +1,8 @@
 package com.nhnacademy.task.service.Impl;
 
 import com.nhnacademy.task.domain.MileStone;
+import com.nhnacademy.task.dto.MilestoneDTO;
+import com.nhnacademy.task.dto.TagDTO;
 import com.nhnacademy.task.repository.MileStoneRepository;
 import com.nhnacademy.task.repository.ProjectRepository;
 import com.nhnacademy.task.repository.TaskRepository;
@@ -10,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -42,7 +45,10 @@ public class MileStoneServiceImpl implements MileStoneService {
 
 
     @Override
-    public List<MileStone> getAllMilestonebyProject(long projectId){
-        return mileStoneRepository.findAllByProject_ProjectId(projectId);
+    public List<MilestoneDTO> getAllMilestonebyProject(long projectId){
+       List<MileStone> milestoneList= mileStoneRepository.findAllByProject_ProjectId(projectId);
+        return milestoneList.stream()
+                .map(MilestoneDTO::new)
+                .collect(Collectors.toList());
     }
 }
