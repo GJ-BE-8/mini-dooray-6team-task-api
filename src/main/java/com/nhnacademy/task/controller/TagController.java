@@ -8,20 +8,24 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("tags/")
 public class TagController {
 
     private final TagService tagService;
 
     //프로젝트에 태그 추가
-    @PostMapping
+    @PostMapping("/tag")
     public Tag createTag(@RequestBody TagRequest tagRequest) {
         return tagService.addTagToProject(tagRequest.getProjectId(), tagRequest.getTagName());
     }
 
     //태그 삭제(태그태스크도 같이 삭제)
-    @DeleteMapping("{tagId}")
+    @DeleteMapping("/tags/{tagId}")
     public void deleteTag(@PathVariable Long tagId) {
         tagService.deleteTag(tagId);
+    }
+
+    @GetMapping("/tags/{tagId}")
+    public Tag getTag(@PathVariable("tagId") Long tagId) {
+        return tagService.getTagById(tagId);
     }
 }
