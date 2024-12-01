@@ -29,7 +29,7 @@ public class TaskController {
         return taskService.updateTask(taskId, content, mileStoneId);
     }
 
-    @PostMapping("/task/delete/{taskId}")
+    @DeleteMapping("/tasks/delete/{taskId}")
     public void deleteTask(@PathVariable long taskId) {
         taskService.deleteTask(taskId);
     }
