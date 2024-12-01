@@ -1,0 +1,10 @@
+POST http://localhost:4444/tagtask
+Content-Type: application/json
+
+{
+  "tagId": 1,
+  "taskId": 1
+}
+
+### delete
+DELETE http://localhost:4444/tagtask/delete/1
