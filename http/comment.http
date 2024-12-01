@@ -7,3 +7,20 @@ Content-Type: application/json
   "writerId": "user1",
   "content": "test"
 }
+
+
+### Comment 수정
+POST http://localhost:4444/comments/1
+
+{
+"taskId":"1",
+"writerId":"이동수",
+"content":"내용을 바꿔볼게"
+}
+
+
+### Comment 삭제
+DELETE http://localhost:4444/comments/1
+
+
+
