@@ -20,4 +20,7 @@ public class ProjectServiceImpl implements ProjectService {
         project.setAdminId(adminId);
         return projectRepository.save(project);
     }
+
+    // todo delete
+
 }

@@ -24,20 +24,8 @@ public class Tag {
     @Length(max = 50)
     private String tagName;
 
-//    @Column(name = "project_id", nullable = false)
-//    private String projectId;
-
-
-
-    //Tag, TagTask 양방향
-    @OneToMany(mappedBy = "tag", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, orphanRemoval = true, fetch = FetchType.EAGER)
-    @JsonManagedReference
-    private List<TagTask> tagTasks = new ArrayList<>();
-
-
-    //Project, Tag 양방향
-    @ManyToOne(optional = false, fetch = FetchType.EAGER)
-    @JsonBackReference
+    //Project, Tag
+    @ManyToOne(optional = false)
     private Project project;
 
 }

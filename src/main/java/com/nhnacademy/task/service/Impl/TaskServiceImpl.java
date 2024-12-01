@@ -42,6 +42,7 @@ public class TaskServiceImpl implements TaskService {
     @Override
     @Transactional
     public void deleteTask(long taskId) {
+        // todo task 참조하는 comment 삭제해야함 and tag_task 삭제해야함 by taskId
         taskRepository.deleteById(taskId);
     }
 
