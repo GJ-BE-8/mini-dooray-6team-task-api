@@ -13,4 +13,7 @@ public interface ProjectService {
     //마일스톤 삭제(task에서도 삭제됨)
 
     void deleteProject(long projectId);
+
+
+    public Project getProject(long ProjectId);
 }

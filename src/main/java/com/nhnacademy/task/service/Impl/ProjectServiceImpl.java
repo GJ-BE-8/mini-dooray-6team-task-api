@@ -22,10 +22,14 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     // todo delete
-
-
     @Override
     public void deleteProject(long projectId) {
         projectRepository.deleteById(projectId);
+    }
+
+
+    @Override
+    public Project getProject(long ProjectId){
+        return projectRepository.findById(ProjectId).get();
     }
 }
