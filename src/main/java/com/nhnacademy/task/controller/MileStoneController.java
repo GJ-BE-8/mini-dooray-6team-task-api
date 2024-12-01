@@ -25,7 +25,7 @@ public class MileStoneController {
     }
 
 
-    @PostMapping("/milestones/delete/{milestoneId}")
+    @DeleteMapping("/milestones/delete/{milestoneId}")
     public void deleteMileStone(@PathVariable Long milestoneId) {
         mileStoneService.deleteMileStone(milestoneId);
     }
