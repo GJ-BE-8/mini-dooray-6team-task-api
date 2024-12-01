@@ -1,6 +1,7 @@
 package com.nhnacademy.task.controller;
 
 import com.nhnacademy.task.domain.Task;
+import com.nhnacademy.task.dto.TaskDTO;
 import com.nhnacademy.task.request.TaskRequest;
 import com.nhnacademy.task.service.TaskService;
 import lombok.RequiredArgsConstructor;
@@ -35,10 +36,13 @@ public class TaskController {
     }
 
 
-    @GetMapping("/tasks/{projectId}")
-    public List<Task> getTasks(@PathVariable("projectId") long projectId) {
+//    @GetMapping("/tasks/{projectId}")
+//    public List<Task> getTasks(@PathVariable("projectId") long projectId) {
+//        return taskService.getTasksByProjectId(projectId);
+//    }
+
+    @GetMapping("/project/{projectId}/task")
+    public List<TaskDTO> getTasksByProject(@PathVariable("projectId") long projectId) {
         return taskService.getTasksByProjectId(projectId);
     }
-
-
 }

@@ -1,6 +1,7 @@
 package com.nhnacademy.task.service.Impl;
 
 import com.nhnacademy.task.domain.Task;
+import com.nhnacademy.task.dto.TaskDTO;
 import com.nhnacademy.task.repository.*;
 import com.nhnacademy.task.service.TaskService;
 import jakarta.transaction.Transactional;
@@ -8,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -50,8 +52,11 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     @Transactional
-    public List<Task> getTasksByProjectId(long projectId) {
-        return taskRepository.findByProject_ProjectId(projectId);
+    public List<TaskDTO> getTasksByProjectId(long projectId) {
+        List<Task> taskList = taskRepository.findAllByProject_ProjectId(projectId);
+        return taskList.stream()
+                .map(TaskDTO::new)
+                .collect(Collectors.toList());
     }
 
 

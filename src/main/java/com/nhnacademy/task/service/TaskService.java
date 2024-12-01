@@ -1,6 +1,7 @@
 package com.nhnacademy.task.service;
 
 import com.nhnacademy.task.domain.Task;
+import com.nhnacademy.task.dto.TaskDTO;
 
 import java.util.List;
 
@@ -17,5 +18,5 @@ public interface TaskService {
     void deleteTask(long taskId);
 
     //특정 프로젝트의 task 목록 조회
-    List<Task> getTasksByProjectId(long projectId);
+    List<TaskDTO> getTasksByProjectId(long projectId);
 }
