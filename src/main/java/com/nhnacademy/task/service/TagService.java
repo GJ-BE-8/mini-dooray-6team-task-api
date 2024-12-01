@@ -2,6 +2,8 @@ package com.nhnacademy.task.service;
 
 import com.nhnacademy.task.domain.Tag;
 
+import java.util.List;
+
 public interface TagService {
     //프로젝트에 태그 추가
     Tag addTagToProject(long projectId, String tagName);
@@ -11,4 +13,7 @@ public interface TagService {
 
     //get
     Tag getTagById(long tagId);
+
+    //태스크에 있는 모든 태그 가져오기
+    public List<Tag> getAllTagByTask(long taskId);
 }

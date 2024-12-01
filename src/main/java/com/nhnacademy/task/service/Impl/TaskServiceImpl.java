@@ -50,4 +50,7 @@ public class TaskServiceImpl implements TaskService {
     public List<Task> getTasksByProjectId(long projectId) {
         return taskRepository.findByProject_ProjectId(projectId);
     }
+
+
+
 }

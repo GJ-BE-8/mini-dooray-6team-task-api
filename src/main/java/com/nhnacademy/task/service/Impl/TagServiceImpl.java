@@ -9,6 +9,8 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class TagServiceImpl implements TagService {
@@ -36,6 +38,11 @@ public class TagServiceImpl implements TagService {
     @Override
     public Tag getTagById(long tagId) {
         return tagRepository.findById(tagId).get();
+    }
+
+    @Override
+    public List<Tag> getAllTagByTask(long taskId){
+        return tagRepository.findAllByTask(taskId);
     }
 }
 
