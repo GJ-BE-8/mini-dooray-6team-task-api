@@ -18,7 +18,7 @@ public class TagController {
         return tagService.addTagToProject(tagRequest.getProjectId(), tagRequest.getTagName());
     }
 
-    //태그 삭제(태그태스크도 같이 삭제)
+    //태그 삭제(태그태스크, comment 도 같이 삭제)
     @DeleteMapping("/tags/{tagId}")
     public void deleteTag(@PathVariable Long tagId) {
         tagService.deleteTag(tagId);

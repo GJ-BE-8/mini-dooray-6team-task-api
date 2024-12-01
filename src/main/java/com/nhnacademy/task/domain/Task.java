@@ -24,7 +24,7 @@ public class Task {
     private String content;
 
     //MileStone, Task
-    @ManyToOne(optional = false)
+    @ManyToOne
     private MileStone mileStone;
 
     //Project, Task

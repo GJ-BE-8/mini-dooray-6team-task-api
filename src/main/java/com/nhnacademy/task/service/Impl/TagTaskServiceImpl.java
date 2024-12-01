@@ -16,14 +16,12 @@ public class TagTaskServiceImpl implements TagTaskService {
     @Override
     @Transactional
     public TagTask saveTagTask(TagTask tagTask) {
-        TagTask savedTagTask = tagTaskRepository.save(tagTask);
-        return tagTask;
+        return tagTaskRepository.save(tagTask);
     }
 
     @Override
     @Transactional
     public void deleteTagTask(TagTask tagTask) {
-        tagTaskRepository.delete(tagTask);
-
+        tagTaskRepository.deleteById(tagTask.getTagTaskId());
     }
 }
