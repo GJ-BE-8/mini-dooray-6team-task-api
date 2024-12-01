@@ -1,6 +1,7 @@
 package com.nhnacademy.task.service.Impl;
 
 import com.nhnacademy.task.domain.Tag;
+import com.nhnacademy.task.dto.TagDTO;
 import com.nhnacademy.task.repository.ProjectRepository;
 import com.nhnacademy.task.repository.TagRepository;
 import com.nhnacademy.task.repository.TagTaskRepository;
@@ -10,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -46,8 +48,11 @@ public class TagServiceImpl implements TagService {
     }
 
     @Override
-    public List<Tag> getAllTagByProjectId(long projectId) {
-        return tagRepository.findAllByProject_ProjectId(projectId);
+    public List<TagDTO> getAllTagByProjectId(long projectId) {
+        List<Tag> tagList = tagRepository.findAllByProject_ProjectId(projectId);
+        return tagList.stream()
+                .map(TagDTO::new)
+                .collect(Collectors.toList());
     }
   
     @Override

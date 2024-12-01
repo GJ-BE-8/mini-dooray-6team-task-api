@@ -1,6 +1,7 @@
 package com.nhnacademy.task.controller;
 
 import com.nhnacademy.task.domain.Tag;
+import com.nhnacademy.task.dto.TagDTO;
 import com.nhnacademy.task.request.TagRequest;
 import com.nhnacademy.task.service.TagService;
 import lombok.RequiredArgsConstructor;
@@ -35,7 +36,7 @@ public class TagController {
 
     //프로젝트에 있는 모든 태그 보기
     @GetMapping("/project/{projectId}/tags")
-    public List<Tag> getTags(@PathVariable("projectId") Long projectId) {
+    public List<TagDTO> getTags(@PathVariable("projectId") Long projectId) {
         return tagService.getAllTagByProjectId(projectId);
     }
   
