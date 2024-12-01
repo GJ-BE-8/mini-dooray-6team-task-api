@@ -1,6 +1,7 @@
 package com.nhnacademy.task.controller;
 
 import com.nhnacademy.task.domain.Project;
+import com.nhnacademy.task.dto.ProjectUpdateDTO;
 import com.nhnacademy.task.request.ProjectRequest;
 import com.nhnacademy.task.service.ProjectService;
 import lombok.RequiredArgsConstructor;
@@ -27,4 +28,13 @@ public class ProjectController {
     public void deleteProject(@PathVariable Long projectId) {
         projectService.deleteProject(projectId);
     }
+
+    @PostMapping("/project/update")
+    public Project updateProject(@RequestBody ProjectUpdateDTO projectUpdateDTO) {
+        return projectService.updateProject(projectUpdateDTO);
+    }
+
+
+
+
 }
