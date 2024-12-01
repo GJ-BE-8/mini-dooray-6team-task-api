@@ -1,0 +1,11 @@
+POST http://localhost:8080/milestone
+Content-Type: application/json
+
+{
+  "projectId":1,
+  "mileStoneName":"마일스톤1"
+}
+
+
+### get
+GET http://localhost:8080/milestone/1

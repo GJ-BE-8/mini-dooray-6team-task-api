@@ -1,5 +1,6 @@
 package com.nhnacademy.task.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -37,16 +38,16 @@ public class Project {
 
    //Project, Tag 양방향
    @OneToMany(mappedBy = "project", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, orphanRemoval = true)
-    private List<Tag> tags = new ArrayList<>();
+   private List<Tag> tags;
 
 
     //Project, MileStone 양방향
     @OneToMany(mappedBy = "project", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, orphanRemoval = true)
-    private List<MileStone> mileStones = new ArrayList<>();
+    private List<MileStone> mileStones;
 
     //Project, Task 양방향
     @OneToMany(mappedBy = "project", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, orphanRemoval = true)
-    private List<Task> tasks = new ArrayList<>();
+    private List<Task> tasks;
 
 
 

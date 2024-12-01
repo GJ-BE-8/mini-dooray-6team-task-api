@@ -7,4 +7,5 @@ public interface MileStoneService {
     //mileStone 반환 타입 몰라서 일단 String으로 진행
 
     void deleteMileStone(long milestoneId);
+    MileStone findById(long milestoneId);
 }
