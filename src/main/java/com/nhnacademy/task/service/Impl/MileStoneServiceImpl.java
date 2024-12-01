@@ -27,6 +27,11 @@ public class MileStoneServiceImpl implements MileStoneService {
     }
 
     @Override
+    public MileStone findById(long milestoneId){
+        return mileStoneRepository.findById(milestoneId).get();
+    }
+
+    @Override
     @Transactional
     public void deleteMileStone(long milestoneId) {
         taskRepository.deleteByMileStone_MilestoneId(milestoneId);

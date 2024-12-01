@@ -1,5 +1,6 @@
 package com.nhnacademy.task.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -35,7 +36,6 @@ public class Project {
    @Column(name = "admin_id", nullable = false)
     private long adminId;
 
-   //Project, Tag 양방향
    @OneToMany(mappedBy = "project", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<Tag> tags = new ArrayList<>();
 
