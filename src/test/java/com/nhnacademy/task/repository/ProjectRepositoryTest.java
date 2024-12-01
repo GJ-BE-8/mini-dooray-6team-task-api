@@ -23,7 +23,7 @@ class ProjectRepositoryTest {
     @Sql("project.sql")
     @Test
     void findProjectTest(){
-        long projectId = 1L;
+        long projectId = 1;
 
         Project project = projectRepository.findById(projectId).orElse(null);
 
