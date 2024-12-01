@@ -1,6 +1,7 @@
 package com.nhnacademy.task.controller;
 
 import com.nhnacademy.task.domain.MileStone;
+import com.nhnacademy.task.dto.MilestoneDTO;
 import com.nhnacademy.task.request.MileStoneRequest;
 import com.nhnacademy.task.service.MileStoneService;
 import jakarta.transaction.Transactional;
@@ -33,7 +34,7 @@ public class MileStoneController {
     }
 
     @GetMapping("/project/{projectId}/milestone")
-    public List<MileStone> getMilestones(@PathVariable Long projectId) {
+    public List<MilestoneDTO> getMilestones(@PathVariable Long projectId) {
         return mileStoneService.getAllMilestonebyProject(projectId);
     }
 }

@@ -1,6 +1,7 @@
 package com.nhnacademy.task.service;
 
 import com.nhnacademy.task.domain.MileStone;
+import com.nhnacademy.task.dto.MilestoneDTO;
 
 import java.util.List;
 
@@ -10,5 +11,5 @@ public interface MileStoneService {
 
     void deleteMileStone(long milestoneId);
     MileStone findById(long milestoneId);
-    List<MileStone> getAllMilestonebyProject(long projectId);
+    List<MilestoneDTO> getAllMilestonebyProject(long projectId);
 }
