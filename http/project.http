@@ -6,3 +6,12 @@ Content-Type: application/json
 "status":"활성",
 "adminId":100
 }
+
+
+### 프로젝트 get
+GET http://localhost:4444/project/1
+
+
+
+### 프로젝트 삭제
+DELETE http://localhost:4444/project/delete/1
