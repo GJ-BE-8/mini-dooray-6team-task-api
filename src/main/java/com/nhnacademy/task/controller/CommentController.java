@@ -29,4 +29,10 @@ public class CommentController {
     public void deleteComment(@PathVariable("commentId")long commentId) {
         commentService.deleteComment(commentId);
     }
+
+    //Comment get
+    @GetMapping("/comments/{commentId}")
+    public Comment getComment(@PathVariable("commentId")long commentId) {
+        return commentService.getComment(commentId);
+    }
 }
