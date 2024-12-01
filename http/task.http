@@ -1,0 +1,25 @@
+### task 생성
+POST http://localhost:4444/task
+Content-Type: application/json
+
+{
+  "projectId": 1,
+  "mileStoneId": 1
+}
+
+### task update
+POST http://localhost:4444/task/update
+Content-Type: application/json
+
+{
+  "taskId": 1,
+  "content": "testtest",
+  "mileStoneId": 1
+}
+
+### task delete
+DELETE http://localhost:4444/task/delete/1
+
+### task get
+GET http://localhost:4444/tasks/1
+
