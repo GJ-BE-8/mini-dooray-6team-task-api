@@ -12,13 +12,13 @@ import java.util.List;
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
+@Sql(value = "comment.sql", executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
 @DataJpaTest
 class CommentRepositoryTest {
 
     @Autowired
     private CommentRepository commentRepository;
 
-    @Sql("comment.sql")
     @Test
     void findCommentTest(){
         long commentId = 1L;
