@@ -1,6 +1,8 @@
 package com.nhnacademy.task.service;
 
 import com.nhnacademy.task.domain.Project;
+import com.nhnacademy.task.dto.ProjectUpdateDTO;
+import com.nhnacademy.task.request.ProjectRequest;
 
 public interface ProjectService {
 
@@ -16,4 +18,7 @@ public interface ProjectService {
 
 
     public Project getProject(long ProjectId);
+
+
+    public Project updateProject(ProjectUpdateDTO projectUpdateDTO);
 }
