@@ -1,5 +1,7 @@
 package com.nhnacademy.task.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.validator.constraints.Length;
@@ -28,12 +30,14 @@ public class Tag {
 
 
     //Tag, TagTask 양방향
-    @OneToMany(mappedBy = "tag", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, orphanRemoval = true)
+    @OneToMany(mappedBy = "tag", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, orphanRemoval = true, fetch = FetchType.EAGER)
+    @JsonManagedReference
     private List<TagTask> tagTasks = new ArrayList<>();
 
 
     //Project, Tag 양방향
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @JsonBackReference
     private Project project;
 
 }

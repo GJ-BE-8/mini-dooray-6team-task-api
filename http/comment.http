@@ -1,0 +1,9 @@
+### Comment 생성
+POST http://localhost:4444/comments
+Content-Type: application/json
+
+{
+  "taskId": 1,
+  "writerId": "user1",
+  "content": "test"
+}

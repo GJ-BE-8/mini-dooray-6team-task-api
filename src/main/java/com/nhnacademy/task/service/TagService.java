@@ -8,4 +8,7 @@ public interface TagService {
 
     //태그 삭제 (task에서도 삭제됨)
     void deleteTag(long tagId);
+
+    //get
+    Tag getTagById(long tagId);
 }

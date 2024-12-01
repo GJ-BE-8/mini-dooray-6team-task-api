@@ -32,4 +32,10 @@ public class TagServiceImpl implements TagService {
         tagTaskRepository.deleteByTag_TagId(tagId);
         tagRepository.deleteById(tagId);
     }
+
+    @Override
+    public Tag getTagById(long tagId) {
+        return tagRepository.findById(tagId).get();
+    }
 }
+

@@ -1,0 +1,15 @@
+### 태그 생성
+POST http://localhost:4444/tag
+Content-Type: application/json
+
+{
+  "projectId":1,
+  "tagName":"test-tag"
+}
+
+
+### 태그 삭제
+DELETE http://localhost:4444/tags/1
+
+### 태그 get
+GET http://localhost:4444/tags/1
