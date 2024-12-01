@@ -1,5 +1,5 @@
 ### Comment 생성
-POST http://localhost:8080/comments
+POST http://localhost:4444/comments
 Content-Type: application/json
 
 {
