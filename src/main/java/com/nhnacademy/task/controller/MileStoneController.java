@@ -7,6 +7,8 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequiredArgsConstructor
 public class MileStoneController {
@@ -28,5 +30,10 @@ public class MileStoneController {
     @DeleteMapping("/milestones/delete/{milestoneId}")
     public void deleteMileStone(@PathVariable Long milestoneId) {
         mileStoneService.deleteMileStone(milestoneId);
+    }
+
+    @GetMapping("/project/{projectId}/milestone")
+    public List<MileStone> getMilestones(@PathVariable Long projectId) {
+        return mileStoneService.getAllMilestonebyProject(projectId);
     }
 }
