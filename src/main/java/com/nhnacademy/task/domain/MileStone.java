@@ -26,13 +26,8 @@ public class MileStone {
     @NotBlank
     private String milestoneName;
 
-    //Project, MileStone 다대다 양방향
-    @ManyToOne(optional = false, fetch = FetchType.EAGER)
-    @JsonBackReference
+    //Project, MileStone 일대다
+    @ManyToOne(optional = false)
     private Project project;
 
-    //MileStone, Task 양방향
-    @OneToMany(mappedBy = "mileStone", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, orphanRemoval = true, fetch = FetchType.EAGER)
-    @JsonManagedReference
-    private List<Task> tasks;
 }

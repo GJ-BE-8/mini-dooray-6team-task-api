@@ -16,8 +16,6 @@ public class Comment {
     @Column(name = "comment_id")
     private long commentId;
 
-//    @Column(name = "task_id")
-//    private long taskId;
 
     @Column(name = "writer_id", nullable = false, length = 50)
     private String writerId;
@@ -25,9 +23,8 @@ public class Comment {
     @Column(length = 255, nullable = false)
     private String content;
 
-    //Project, Comment 양방향
-    @ManyToOne(optional = false, fetch = FetchType.EAGER)
-    @JsonBackReference
+    //Project, Comment
+    @ManyToOne(optional = false)
     private Task task;
 
 }

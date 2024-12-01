@@ -16,13 +16,8 @@ public class TagTask {
     @Column(name = "tag_task_id")
     private long tagTaskId;
 
-//    @Column(name = "tag_id", nullable = false)
-//    private long tagId;
     @ManyToOne(optional = false)
     private Tag tag;
-
-//    @Column(name = "task_id", nullable = false)
-//    private long taskId;
 
     @ManyToOne(optional = false)
     private Task task;
