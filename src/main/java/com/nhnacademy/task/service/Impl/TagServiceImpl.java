@@ -45,5 +45,9 @@ public class TagServiceImpl implements TagService {
         return tagRepository.findAllByTask(taskId);
     }
 
+    @Override
+    public List<Tag> getAllTagByProjectId(long projectId) {
+        return tagRepository.findAllByProject_ProjectId(projectId);
+    }
 }
 
