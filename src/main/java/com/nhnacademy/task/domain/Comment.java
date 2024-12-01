@@ -1,5 +1,6 @@
 package com.nhnacademy.task.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -25,7 +26,8 @@ public class Comment {
     private String content;
 
     //Project, Comment 양방향
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @JsonBackReference
     private Task task;
 
 }
