@@ -19,5 +19,10 @@ public interface TagService {
     //태스크에 있는 모든 태그 가져오기
     public List<Tag> getAllTagByTask(long taskId);
 
+
+    //특정 프로젝트의 모든 태그 가져오기
+    public List<Tag> getAllTagByProjectId(long projectId);
+
     Tag updateTag(Long tagId, String tagName);
+
 }

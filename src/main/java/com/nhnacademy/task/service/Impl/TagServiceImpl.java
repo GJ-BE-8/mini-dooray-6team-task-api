@@ -46,6 +46,11 @@ public class TagServiceImpl implements TagService {
     }
 
     @Override
+    public List<Tag> getAllTagByProjectId(long projectId) {
+        return tagRepository.findAllByProject_ProjectId(projectId);
+    }
+  
+    @Override
     public Tag updateTag(Long tagId, String tagName) {
         Tag tag = tagRepository.findById(tagId)
                 .orElseThrow(() -> new RuntimeException("태그 없음! "));

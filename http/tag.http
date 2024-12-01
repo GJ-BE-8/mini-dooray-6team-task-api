@@ -4,7 +4,25 @@ Content-Type: application/json
 
 {
   "projectId":1,
-  "tagName":"test-tag"
+  "tagName":"test-tag1"
+}
+
+### 태그 생성2
+POST http://localhost:4444/tag
+Content-Type: application/json
+
+{
+  "projectId":1,
+  "tagName":"test-tag2"
+}
+
+### 태그 생성3
+POST http://localhost:4444/tag
+Content-Type: application/json
+
+{
+  "projectId":1,
+  "tagName":"test-tag3"
 }
 
 ### 태그 삭제
@@ -13,6 +31,11 @@ DELETE http://localhost:4444/tags/1
 ### 태그 get
 GET http://localhost:4444/tags/1
 
+
+
+### 특정 프로젝트의 모든 태그 불러오기
+GET http://localhost:4444/project/1/tags
+
 ### 태그 수정
 PUT http://localhost:4444/tags/1
 Content-Type: application/json
@@ -20,3 +43,4 @@ Content-Type: application/json
 {
   "tagName": "태그 수정"
 }
+

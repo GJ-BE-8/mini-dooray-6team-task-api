@@ -6,6 +6,8 @@ import com.nhnacademy.task.service.TagService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequiredArgsConstructor
 public class TagController {
@@ -29,8 +31,17 @@ public class TagController {
         return tagService.getTagById(tagId);
     }
 
+
+
+    //프로젝트에 있는 모든 태그 보기
+    @GetMapping("/project/{projectId}/tags")
+    public List<Tag> getTags(@PathVariable("projectId") Long projectId) {
+        return tagService.getAllTagByProjectId(projectId);
+    }
+  
     @PutMapping("/tags/{tagId}")
     public Tag updateTag(@PathVariable("tagId") Long tagId, @RequestBody TagRequest tagRequest) {
         return tagService.updateTag(tagId, tagRequest.getTagName());
+
     }
 }
