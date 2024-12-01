@@ -11,13 +11,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 
+@Sql(value = "project.sql", executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
 @DataJpaTest
 class ProjectRepositoryTest {
 
     @Autowired
     private ProjectRepository projectRepository;
 
-    @Sql("project.sql")
     @Test
     void findProjectTest(){
         long projectId = 1L;
